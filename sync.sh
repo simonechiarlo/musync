@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 ./sync.py
+python3 /root/mysinc/sync.py
