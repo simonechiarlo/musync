@@ -22,6 +22,6 @@ def sync():
     os.system(YOUTUBE_DLP_COMMAND)
     
 if __name__ == "__main__":
-    send_status("Syncing Started")
+    send_status("Sync ⏳")
     sync()
-    send_status("Syncing Completed")
+    send_status("Sync ✅")
