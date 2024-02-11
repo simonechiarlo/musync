@@ -1,2 +1,3 @@
 #!/bin/bash
-python3 /root/musync/sync.py
+cd /root/musync
+python3 ./sync.py
