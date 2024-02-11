@@ -1,25 +1,30 @@
 import sys
 import requests
 from dotenv import load_dotenv
-import os #provides ways to access the Operating System and allows us to read the environment variables
-
+import os 
 load_dotenv()
 
 TOKEN = os.getenv("TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
+YOUTUBE_DLP_COMMAND = os.getenv("YOUTUBE_DLP_COMMAND")
 
 
-def send_status():
+def send_status(msg):
     if(len(sys.argv) < 2):
         print("Usage: python status.py <message>")
         sys.exit()
 
-    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={sys.argv[1]}"
+    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={msg}"
     res = requests.get(url).json()
     if res.get("ok"):
         print("Message Sent")
     else:
         print("Message Failed")
+        
+def sync():
+    os.system(YOUTUBE_DLP_COMMAND)
     
 if __name__ == "__main__":
-    send_status()
+    send_status("Syncing Started")
+    sync()
+    send_status("Syncing Completed")
