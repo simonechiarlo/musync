@@ -10,9 +10,6 @@ YOUTUBE_DLP_COMMAND = os.getenv("YOUTUBE_DLP_COMMAND")
 
 
 def send_status(msg):
-    if(len(sys.argv) < 2):
-        print("Usage: python status.py <message>")
-        sys.exit()
 
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={msg}"
     res = requests.get(url).json()
