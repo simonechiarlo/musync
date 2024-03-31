@@ -8,9 +8,7 @@ TOKEN = os.getenv("TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 YOUTUBE_DLP_COMMAND = os.getenv("YOUTUBE_DLP_COMMAND")
 
-
 def send_status(msg):
-
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={msg}"
     res = requests.get(url).json()
     if res.get("ok"):
