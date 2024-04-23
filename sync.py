@@ -16,10 +16,23 @@ def send_status(msg):
     else:
         print("Message Failed")
         
+def send_file(file_path):
+    url = f"https://api.telegram.org/bot{TOKEN}/sendDocument"
+    files = {
+        "chat_id": (None, CHAT_ID),
+        "document": open(file_path, "rb")
+    }
+    res = requests.post(url, files=files).json()
+    if res.get("ok"):
+        print("File Sent")
+    else:
+        print("File Failed")
+        
 def sync():
-    os.system(YOUTUBE_DLP_COMMAND)
+    os.system(YOUTUBE_DLP_COMMAND + "| tee -a /app/log.txt")
     
 if __name__ == "__main__":
     send_status("Sync ⏳")
     sync()
     send_status("Sync ✅")
+    send_file("/app/log.txt")
