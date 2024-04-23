@@ -29,7 +29,8 @@ def send_file(file_path):
         print("File Failed")
         
 def sync():
-    os.system(YOUTUBE_DLP_COMMAND + "| tee -a /app/log.txt")
+    # create a log file to store the output of the command
+    os.system(YOUTUBE_DLP_COMMAND + "| tee /app/log.txt")
     
 if __name__ == "__main__":
     send_status("Sync ⏳")
